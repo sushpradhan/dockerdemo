@@ -1,0 +1,20 @@
+version: '3'
+services:
+
+  webapp3-service:
+     image: webapp3-service
+     build: 
+       context: webapp3/
+     restart: always
+     ports:
+       - 9080:8080
+
+  webapp4:
+     build: ./webapp4
+     
+       
+
+
+     
+     
+     
