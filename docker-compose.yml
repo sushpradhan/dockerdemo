@@ -1,14 +1,27 @@
 version: '3'
 services:
 
+  user-mysql:
+     image: mysql:5.7
+     network_mode: host
+     ports:
+       - "3306:3306"
+     environment:
+       MYSQL_ROOT_PASSWORD: password
+       MYSQL_PASSWORD: password
+       MYSQL_DATABASE: DockerStudentDB
+       MYSQL_HOST: localhost
+       
   webapp3-service:
      image: webapp3-service
      build: 
        context: webapp3/
-     restart: always
+     depends_on:
+       - user-mysql
      ports:
-       - 9080:8080
-
+       - "8089:8089"
+     network_mode: host
+     restart: always
   webapp4:
      build: ./webapp4
      
