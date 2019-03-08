@@ -11,32 +11,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Student;
-import com.example.demo.service.StudentService;
+import com.example.demo.domain.Department;
+import com.example.demo.service.DepartmentService;
 
 @RestController
-@RequestMapping("/api/webapp3/student")
-public class StudentController {
+@RequestMapping("/api/webapp4/department")
+public class DepartmentController {
 
 	@Autowired
-	private Student student;
+	private Department department;
 	
 	@Autowired
-	private StudentService studentService;
+	private DepartmentService departmentService;
 	
 	@GetMapping
 	public String index() {
-		return "WebApp3 controller accessible";
+		return "WebApp4 Department controller accessible";
 	}
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Student>> getAllStudents() {
-		return new ResponseEntity<List<Student>>(studentService.getAllStudents(),HttpStatus.OK);
+	public ResponseEntity<List<Department>> getAllDepartments() {
+		
+		return new ResponseEntity<List<Department>>(departmentService.getAllDepartments(),HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Student> addStudent(@RequestBody Student student) {
-		return new ResponseEntity<Student>(studentService.addStudent(student),HttpStatus.CREATED);
+	public ResponseEntity<?> addDepartment(@RequestBody Department department) {
+		
+		return new ResponseEntity<Department>(departmentService.addDepartment(department),HttpStatus.CREATED);
 	}
+	
 	
 }

@@ -21,9 +21,9 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public boolean addStudent(Student student) {
+	public Student addStudent(Student student) {
 		studentRepository.save(student);
-		return true;
+		return student;
 	}
 
 }

@@ -11,7 +11,16 @@ services:
        MYSQL_PASSWORD: password
        MYSQL_DATABASE: DockerStudentDB
        MYSQL_HOST: localhost
-       
+  user-mongo:
+     image: mongo
+     network_mode: host
+     ports:
+       - "27017:27017"
+     environment:
+       MONGO_DATABASE: DepartmentDB
+       MONGO_PORT: 27017
+       MONGO_HOST: localhost
+
   webapp3-service:
      image: webapp3-service
      build: 
@@ -23,11 +32,14 @@ services:
      network_mode: host
      restart: always
   webapp4:
-     build: ./webapp4
-     
+     image: webapp4-service
+     build: 
+       context: webapp4/
+     depends_on:
+       - user-mongo
+     ports:
+       - "8083:8083"
+     network_mode: host
+     restart: always
        
 
-
-     
-     
-     
