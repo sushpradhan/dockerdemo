@@ -8,7 +8,7 @@ services:
      environment:
        MONGO_DATABASE: DepartmentDB
        MONGO_PORT: 27017
-       MONGO_HOST: localhost
+       MONGO_HOST: 127.0.0.1
 
   webapp4:
      image: webapp4-service
@@ -17,9 +17,9 @@ services:
      depends_on:
        - user-mongo
      ports:
-       - "8083:8083"
+       - "8084:8084"
      network_mode: host
-     restart: always
+
        
 
 
