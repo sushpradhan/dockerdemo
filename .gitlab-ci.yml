@@ -11,3 +11,9 @@ maven-test:
 maven-build:
   stage: build
   script: "mvn package"
+  
+variables:
+  MYSQL_DATABASE: springDB
+  MYSQL_USER: root
+  MYSQL_PASSWORD: root
+  MYSQL_ROOT_PASSWORD: root
